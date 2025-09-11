@@ -1,5 +1,5 @@
 
-from pre_funcs import *
+from funcs import *
 import pandas as pd
 
 if __name__ == "__main__":
@@ -27,4 +27,16 @@ if __name__ == "__main__":
     # spectrum_to_csv(cut_to_visible_range_path, "spectrum.csv")
     # df = pd.read_csv("spectrum.csv")
     # print(df.shape)
+
+    split("spectrum_5.csv", "spectrum.csv", 5)
+    split("spectrum_10.csv", "spectrum.csv", 10)
+
+    df1 = pd.read_csv("spectrum.csv")
+    print(df1.shape)
+
+    df5 = pd.read_csv("spectrum_5.csv")
+    print(df5.shape)
+
+    df10 = pd.read_csv("spectrum_10.csv")
+    print(df10.shape)
 

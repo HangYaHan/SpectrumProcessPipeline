@@ -224,5 +224,13 @@ def spectrum_to_csv(src_dir, save_csv):
         writer = csv.writer(csvfile)
         for row in spectra:
             writer.writerow(row)
+
+def split(target, source, step):
+    import pandas as pd
+    df = pd.read_csv(source, header=None)
+    # 按step间隔取列
+    df_sampled = df.iloc[:, ::step]
+    df_sampled.to_csv(target, index=False, header=False)
+
     
 

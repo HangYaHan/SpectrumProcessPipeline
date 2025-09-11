@@ -8,7 +8,8 @@ from torch.utils.data import TensorDataset, DataLoader
 
 # 读取 grey.csv 和 spectrum.csv
 grey_df = pd.read_csv('grey.csv')
-spectrum_df = pd.read_csv('spectrum.csv')
+spectrum_df = pd.read_csv('spectrum_10.csv')
+step = 10
 
 # 对 spectrum_df 进行归一化
 scaler = MinMaxScaler()
@@ -72,7 +73,7 @@ with torch.no_grad():
     y_pred = model(x_sample).cpu().numpy().flatten()
 
 plt.figure(figsize=(10,5))
-wavelengths = np.arange(400, 801)
+wavelengths = np.arange(400, 801, step)[:len(y_true)]
 plt.plot(wavelengths, y_true, label='True Spectrum')
 plt.plot(wavelengths, y_pred, label='Predicted Spectrum')
 plt.xlabel('Wavelength')
