@@ -1,0 +1,2 @@
+
+        loss = criterion(preds, yb)
